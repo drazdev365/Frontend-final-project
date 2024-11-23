@@ -14,7 +14,7 @@ function App (){
       <Navbar />
       <Hero />
       {/* stat */}
-      <div className="flex justify-between text-white bg-black py-10 px-32">
+      <div className="flex lg:justify-between justify-evenly text-white bg-black py-10 lg:px-32">
         <Stat text="CAR RENTED" numb="240" />
         <span className=" text-[#0066FF]">
           <Stat text="CARTIFIED CLIENTS" numb="235" />
@@ -26,11 +26,11 @@ function App (){
       <Does />
       <VideoSection />
 
-      <div className="flex flex-col justify-center items-center mt-[70px] mb-[30px]">
-        <h1 className="text-[2.125rem] w-[691px] font-bold h-[58px] text-center">
+      <div className="flex flex-col justify-center items-center mt-[4.375rem] mb-[1.875rem]">
+        <h1 className="text-[2.125rem] w-[43.188rem] font-bold h-[3.625rem] text-center">
           Important Things to Consider
         </h1>
-        <h4 className="w-[530px] text-[16px]">
+        <h4 className="w-[33.125rem] text-[1rem]">
           Depending on your circumstances and what is important to you, a lease
           could be a great option for your next vehicle. Below are some
           important factors that may influence your decision.
@@ -56,7 +56,7 @@ function App (){
         />
       </div>
 
-      <footer className="bg-black mt-[70px] pt-[30px] pb-[20px]">
+      <footer className="bg-black mt-[4.375rem] pt-[1.875rem] pb-[1.25rem]">
         <div className="flex justify-between px-52">
           <Footers
             text1="Product"
@@ -77,6 +77,27 @@ function App (){
             text3="Team"
             text4="Careers"
           />
+        </div>
+        <div className="flex justify-center gap-7 mt-[1.875rem]">
+          <button>
+            <img src="/Apple.png" alt="" />
+          </button>
+          <button>
+            <img src="/Google.png" alt="" />
+          </button>
+        </div>
+        <div className="flex justify-center mt-[1.875rem]">
+          <h6 className="w-[806px] text-white text-center">
+            For questions about the TrueCar Auto Buying Service please call
+            +2347068095092. <br /> Certified Dealers are contractually obligated
+            by TrueCar to meet certain customer service requirements and
+            complete the TrueCar Dealer <br /> Certification Program. <br />
+            TrueCar does not broker, sell, or lease motor vehicles. Unless
+            otherwise noted, all vehicles shown on this website are offered for
+            sale by licensed motor vehicle dealers. All vehicles are subject to
+            prior sale. By accessing this website, you agree to the TrueCar
+            Terms of Service and Privacy Policy.
+          </h6>
         </div>
       </footer>
     </>
