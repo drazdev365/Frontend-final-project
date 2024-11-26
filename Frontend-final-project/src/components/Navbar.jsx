@@ -6,16 +6,16 @@ export default function Navbar() {
 
   return (
     <div>
-      {/* nav */}
-      <div className="absolute top-0 flex justify-center items-center mt-6 w-full z-50">
-        <nav className="w-[90%] flex justify-between px-6 md:px-20 bg-center">
+      {/* Nav */}
+      <div className="absolute top-0 left-0 w-full z-50 mt-6">
+        <nav className="flex justify-between items-center px-6 md:px-20 bg-center w-full">
           {/* Logo Section */}
-          <div className="w-1/2">
-            <img src="/logo.png" alt="logo" />
+          <div className="w-1/2 flex justify-start items-center">
+            <img src="/logo.png" alt="logo" className="h-10" />
           </div>
 
           {/* Navigation Buttons */}
-          <div className="hidden md:flex w-full items-center justify-between text-white">
+          <div className="hidden md:flex w-full items-center justify-center space-x-6 text-white">
             <button>NEW CARS</button>
             <button>PRE-OWNED CARS</button>
             <button>FINANCE</button>
@@ -23,16 +23,18 @@ export default function Navbar() {
             <button>CONTACT US</button>
           </div>
 
+          {/* Mobile Hamburger Menu */}
           <div className="md:hidden flex items-center">
             <button
-              className="text-black font-semibold "
+              className="text-black font-semibold"
               onClick={() => setIsMenuOpen(!isMenuOpen)}
-            > ☰
+            >
+              ☰
             </button>
           </div>
         </nav>
 
-
+        {/* Mobile Menu */}
         {isMenuOpen && (
           <div className="md:hidden bg-gray-800 text-white w-full absolute top-16 left-0 z-40 flex flex-col items-center space-y-4 py-4">
             <button onClick={() => setIsMenuOpen(false)}>NEW CARS</button>

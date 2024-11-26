@@ -1,43 +1,47 @@
-import React from 'react'
-import Navbar from './components/Navbar'
-import { Hero } from './components/Hero';
-import Stat from './components/Stat';
-import WhyLease from './components/Whylease';
-import Does from './components/Does';
-import VideoSection from './components/VideoSection';
-import Importance from './components/Importance';
-import Footers from './components/Footers';
+import React from "react";
+import Navbar from "./components/Navbar";
+import { Hero } from "./components/Hero";
+import Stat from "./components/Stat";
+import WhyLease from "./components/Whylease";
+import Does from "./components/Does";
+import VideoSection from "./components/VideoSection";
+import Importance from "./components/Importance";
+import Footers from "./components/Footers";
 
-function App (){
+function App() {
   return (
-    <>
+    <div className="flex flex-col justify-center px-4">
       <Navbar />
       <Hero />
-      {/* stat */}
-      <div className="flex lg:justify-between justify-evenly text-white bg-black py-10 lg:px-32">
+
+      {/* Stat Section */}
+      <div className="flex flex-wrap justify-between text-white bg-black py-10 lg:px-32 px-4">
         <Stat text="CAR RENTED" numb="240" />
         <span className=" text-[#0066FF]">
-          <Stat text="CARTIFIED CLIENTS" numb="235" />
+          <Stat text="CERTIFIED CLIENTS" numb="235" />
         </span>
-        <Stat text="YEARS EXPERINENCE" numb="12+" />
-        <Stat text="CAR TYPE" numb="18" />
+        <Stat text="YEARS EXPERIENCE" numb="12+" />
+        <Stat text="CAR TYPES" numb="18" />
       </div>
+
       <WhyLease />
       <Does />
       <VideoSection />
 
-      <div className="flex flex-col justify-center items-center mt-[4.375rem] mb-[1.875rem]">
-        <h1 className="text-[2.125rem] w-[43.188rem] font-bold h-[3.625rem] text-center">
+      {/* Important Things to Consider */}
+      <div className="flex flex-col justify-center items-center mt-16 mb-8">
+        <h1 className="text-3xl md:text-4xl lg:text-5xl font-bold text-center">
           Important Things to Consider
         </h1>
-        <h4 className="w-[33.125rem] text-[1rem]">
+        <h4 className="w-full md:w-4/5 lg:w-1/2 text-base text-center mt-4">
           Depending on your circumstances and what is important to you, a lease
           could be a great option for your next vehicle. Below are some
           important factors that may influence your decision.
         </h4>
       </div>
 
-      <div className="flex justify-between px-24">
+      {/* Importance Section */}
+      <div className="flex flex-col md:flex-row flex-wrap justify-between lg:px-24 px-4 gap-y-10 lg:gap-y-0">
         <Importance
           image="/Imp6.png"
           text="Monthly payments on leases are generally 20% - 30% cheaper than loans"
@@ -56,8 +60,9 @@ function App (){
         />
       </div>
 
-      <footer className="bg-black mt-[4.375rem] pt-[1.875rem] pb-[1.25rem]">
-        <div className="flex justify-between px-52">
+      {/* Footer Section */}
+      <footer className="bg-black mt-16 pt-8 pb-6">
+        <div className="flex flex-wrap justify-between lg:px-52 px-4">
           <Footers
             text1="Product"
             text2="Used"
@@ -78,16 +83,16 @@ function App (){
             text4="Careers"
           />
         </div>
-        <div className="flex justify-center gap-7 mt-[1.875rem]">
+        <div className="flex justify-center gap-7 mt-8">
           <button>
-            <img src="/Apple.png" alt="" />
+            <img src="/Apple.png" alt="Apple" />
           </button>
           <button>
-            <img src="/Google.png" alt="" />
+            <img src="/Google.png" alt="Google" />
           </button>
         </div>
-        <div className="flex justify-center mt-[1.875rem]">
-          <h6 className="w-[806px] text-white text-center">
+        <div className="flex justify-center mt-8">
+          <h6 className="text-white text-center w-full md:w-4/5 lg:w-1/2 text-sm">
             For questions about the TrueCar Auto Buying Service please call
             +2347068095092. <br /> Certified Dealers are contractually obligated
             by TrueCar to meet certain customer service requirements and
@@ -100,7 +105,7 @@ function App (){
           </h6>
         </div>
       </footer>
-    </>
+    </div>
   );
 }
 

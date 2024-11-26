@@ -4,10 +4,8 @@ import {
   FaChevronRight,
   FaSearch,
   FaCar,
-  // FaHandShake,
   FaUsers,
 } from "react-icons/fa";
-
 
 export function Hero() {
   const HeroData = [
@@ -26,7 +24,7 @@ export function Hero() {
       Description:
         "Discover a variety of vehicles available for lease to meet your travel or business needs.",
       Button: "Browse Cars",
-      icon: <FaSearch/>,
+      icon: <FaSearch />,
       href: "/browse-cars",
     },
     {
@@ -35,7 +33,6 @@ export function Hero() {
       Description:
         "Choose from short-term or long-term leasing options that suit your requirements.",
       Button: "Get Started",
-      // icon: <FaHandShake />,
       href: "/get-started",
     },
     {
@@ -49,9 +46,8 @@ export function Hero() {
     },
   ];
 
-
   return (
-    <div className=" h-screen">
+    <div className="h-screen">
       <Carousel
         loop={true}
         autoplay={true}
@@ -72,12 +68,11 @@ export function Hero() {
             color="white"
             size="lg"
             onClick={handleNext}
-            className="!absolute hidden  text-2xl sm:inline-block hover:bg-gray-100 transition-all duration-300  hover:bg-opacity-10 rounded-full text-fcg-50  top-2/4 !right-2 -translate-y-2/4"
+            className="!absolute hidden sm:inline-block text-2xl hover:bg-gray-100 transition-all duration-300 hover:bg-opacity-10 rounded-full text-fcg-50 top-2/4 !right-2 -translate-y-2/4"
           >
             <FaChevronRight />
           </IconButton>
         )}
-        
         navigation={({ setActiveIndex, activeIndex, length }) => (
           <div className="absolute bottom-4 left-2/4 z-10 flex -translate-x-2/4 gap-2">
             {new Array(length).fill("").map((_, i) => (
@@ -93,36 +88,24 @@ export function Hero() {
         )}
       >
         {HeroData.map((data, id) => (
-          <div
-            key={id}
-            className="lg:h-screen  relative w-full bg-fce-50"
-          >
+          <div key={id} className="lg:h-screen relative w-full bg-fce-50">
             <img
               src={data.imageUrl}
               alt={data.imageUrl}
-              className=" w-full opacity-80 object-cover h-[100%] "
+              className="w-full opacity-80 object-cover h-[100%]"
             />
-            <div className="lg:w-[50%] pl-1 w-[60%] flex flex-col gap-2 absolute top-1/3 left-3/4 -translate-y-1/2  text-black -translate-x-[80%] pop ">
-              <h1 className="lg:text-4xl text-md font-bold w-[80%]">
+            <div className="lg:w-[50%] w-[70%] absolute top-1/3 left-3/4 -translate-y-1/2 -translate-x-[80%] flex flex-col gap-4 text-black px-6 sm:px-12">
+              <h1 className="lg:text-4xl text-xl font-bold w-full">
                 {data.Headline}
               </h1>
-              <p className="w-[80%] text-xs lg:text-sm">{data.Description}</p>
-              <p to={data.href}>
-                {data.Button && "Claim Food" ? (
-                  <Button
-                    className="flex gap-1 items-center lg:py-2 py-1 bg-fce-50 text-fcg-800 rounded lg:rounded-md text-[8px] px-2 lg:px-3 lg:text-sm font-semibold"
-                    // onClick={scrollToClaim}
-                  >
-                    {data.Button}
-                    {data.icon}
-                  </Button>
-                ) : (
-                  <Button className="flex gap-1 items-center py-1 bg-fce-50 text-fcg-50 rounded lg:rounded-md lg:py-2 text-[8px] px-2 lg:px-3 lg:text-sm font-semibold">
-                    {data.Button}
-                    {data.icon}
-                  </Button>
-                )}
-              </p>
+              <p className="text-xs lg:text-sm">{data.Description}</p>
+              <Button
+                href={data.href}
+                className="flex gap-2 items-center lg:py-2 py-1 bg-fce-50 text-fcg-800 rounded lg:rounded-md text-xs lg:text-sm font-semibold px-3"
+              >
+                {data.Button}
+                {data.icon && <span className="text-lg">{data.icon}</span>}
+              </Button>
             </div>
           </div>
         ))}
