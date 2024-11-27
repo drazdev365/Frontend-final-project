@@ -5,7 +5,6 @@ const CarsList = () => {
   const [visibleCars, setVisibleCars] = useState(20);
   const [loading, setLoading] = useState(false);
 
-  // Function to fetch cars data from the API
   const fetchCars = async () => {
     setLoading(true);
     try {
@@ -13,7 +12,7 @@ const CarsList = () => {
         "https://auto.dev/api/listings?apikey=ZrQEPSkKZGF1ZGFhYmR1bHJhemFxQGdtYWlsLmNvbQ=="
       );
       const data = await response.json();
-      setCars(data.listings); // Assuming data.listings contains the cars list
+      setCars(data.listings || []); // Fallback to an empty array if listings are undefined
     } catch (error) {
       console.error("Error fetching cars:", error);
     } finally {
@@ -35,22 +34,22 @@ const CarsList = () => {
     <div className="p-4">
       <h1 className="text-2xl font-bold mb-4">Cars Listings</h1>
 
-      {/* Display Loading Indicator */}
       {loading && <p>Loading cars...</p>}
 
-      {/* Display Cars */}
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
         {cars.slice(0, visibleCars).map((car, index) => (
           <div key={index} className="border rounded p-4 shadow-md bg-white">
             <h2 className="text-xl font-semibold mb-2">
-              {car.make} {car.model}
+              Maker: {car.make || "N/A"}
             </h2>
-            <p className="text-gray-600">{car.description}</p>
+            <p className="text-gray-600">Year: {car.year || "N/A"}</p>
+            <p className="text-gray-600">Colour: {car.displayColor || "N/A"}</p>
+            <p className="text-gray-600">Price: {car.price || "N/A"}</p>
+            <p className="text-gray-600">Mileage: {car.mileage || "N/A"}</p>
           </div>
         ))}
       </div>
 
-      {/* Show More Button */}
       {visibleCars < cars.length && (
         <button
           onClick={loadMoreCars}

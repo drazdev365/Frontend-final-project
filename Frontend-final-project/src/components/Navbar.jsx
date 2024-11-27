@@ -1,7 +1,6 @@
 import { useState } from "react";
-// import ContactUs from "./ContactUs";
 
-export default function Navbar() {
+export default function Navbar({ onNewCarsClick }) {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
 
   return (
@@ -16,7 +15,7 @@ export default function Navbar() {
 
           {/* Navigation Buttons */}
           <div className="hidden md:flex w-full items-center justify-center space-x-6 text-white">
-            <button>NEW CARS</button>
+            <button onClick={onNewCarsClick}>NEW CARS</button>
             <button>PRE-OWNED CARS</button>
             <button>FINANCE</button>
             <button>LEASE VS BUY</button>
@@ -37,7 +36,14 @@ export default function Navbar() {
         {/* Mobile Menu */}
         {isMenuOpen && (
           <div className="md:hidden bg-gray-800 text-white w-full absolute top-16 left-0 z-40 flex flex-col items-center space-y-4 py-4">
-            <button onClick={() => setIsMenuOpen(false)}>NEW CARS</button>
+            <button
+              onClick={() => {
+                onNewCarsClick();
+                setIsMenuOpen(false);
+              }}
+            >
+              NEW CARS
+            </button>
             <button onClick={() => setIsMenuOpen(false)}>PRE-OWNED CARS</button>
             <button onClick={() => setIsMenuOpen(false)}>FINANCE</button>
             <button onClick={() => setIsMenuOpen(false)}>LEASE VS BUY</button>
