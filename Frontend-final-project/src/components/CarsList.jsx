@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 
 const CarsList = () => {
   const [cars, setCars] = useState([]);
-  const [visibleCars, setVisibleCars] = useState(20);
+  const [visibleCars, setVisibleCars] = useState(5);
   const [loading, setLoading] = useState(false);
 
   const fetchCars = async () => {
@@ -12,7 +12,8 @@ const CarsList = () => {
         "https://auto.dev/api/listings?apikey=ZrQEPSkKZGF1ZGFhYmR1bHJhemFxQGdtYWlsLmNvbQ=="
       );
       const data = await response.json();
-      setCars(data.listings || []); // Fallback to an empty array if listings are undefined
+      console.log(data.records);
+      setCars(data.records || []); // Fallback to an empty array if listings are undefined
     } catch (error) {
       console.error("Error fetching cars:", error);
     } finally {
@@ -27,7 +28,7 @@ const CarsList = () => {
 
   // Function to load more cars
   const loadMoreCars = () => {
-    setVisibleCars((prevVisibleCars) => prevVisibleCars + 20);
+    setVisibleCars((prevVisibleCars) => prevVisibleCars + 5); // Load 20 more cars
   };
 
   return (
@@ -38,14 +39,19 @@ const CarsList = () => {
 
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
         {cars.slice(0, visibleCars).map((car, index) => (
-          <div key={index} className="border rounded p-4 shadow-md bg-white">
-            <h2 className="text-xl font-semibold mb-2">
-              Maker: {car.make || "N/A"}
-            </h2>
-            <p className="text-gray-600">Year: {car.year || "N/A"}</p>
-            <p className="text-gray-600">Colour: {car.displayColor || "N/A"}</p>
-            <p className="text-gray-600">Price: {car.price || "N/A"}</p>
-            <p className="text-gray-600">Mileage: {car.mileage || "N/A"}</p>
+          <div key={index}>
+            <div>
+              <img src={car.primaryPhotoUrl} alt="" />
+            </div>
+            <div className="border rounded p-4 shadow-md bg-white">
+              <h2 className="text-xl font-semibold mb-2">
+                Maker: {car.make || "N/A"}
+              </h2>
+              <p className="text-gray-600">Year: {car.year || "N/A"}</p>
+              <p className="text-gray-600">Colour: {car.displayColor || "N/A"}</p>
+              <p className="text-gray-600">Price: {car.price || "N/A"}</p>
+              <p className="text-gray-600">Mileage: {car.mileage || "N/A"}</p>
+            </div>
           </div>
         ))}
       </div>
