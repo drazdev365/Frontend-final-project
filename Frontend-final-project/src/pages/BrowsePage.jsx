@@ -4,15 +4,15 @@ import { Link } from "react-router-dom";
 // Filter Component
 const FilterComponent = ({ onFilterChange }) => {
   const [filters, setFilters] = useState({
-    make: "",
-    model: "",
+    make: "Acura",
+    model: "MDX",
     yearMin: 2016,
     yearMax: 2022,
     priceMax: 35000,
-    transmission: "Automatic",
+    transmission: "automatic",
     features: [],
-    exteriorColor: "",
-    interiorColor: "",
+    exteriorColor: "black",
+    interiorColor: "black",
     page: 1,
   });
 
@@ -38,7 +38,7 @@ const FilterComponent = ({ onFilterChange }) => {
   };
 
   return (
-    <div className="p-4 border w-[30%] border-gray-300 rounded-md shadow-md space-y-4 bg-white">
+    <div className="p-4 border w-[20%] border-gray-300 rounded-md shadow-md space-y-4 bg-white">
       <div className="flex flex-col space-y-2">
         <label className="font-semibold">Make</label>
         <select name="make" onChange={handleFilterChange} value={filters.make} className="p-2 border border-gray-300 rounded-md">
@@ -111,8 +111,8 @@ const FilterComponent = ({ onFilterChange }) => {
 
       <div className="flex flex-col space-y-2">
         <label className="font-semibold">Features</label>
-        <div className="flex space-x-4">
-          <div className="flex items-center">
+        <div className="flex flex-col justify-start gap-[2px] items-start ">
+          <div className="flex  items-center">
             <input
               type="checkbox"
               value="sunroof"
@@ -215,12 +215,12 @@ const CarListingPage = () => {
         yearMin: 2016,
         yearMax: 2022,
         priceMax: 35000,
-        make: "",
-        model: "",
-        transmission: "Automatic",
+        make: "Acura",
+        model: "MDX",
+        transmission: "automatic",
         features: [],
-        exteriorColor: "",
-        interiorColor: "",
+        exteriorColor: "black",
+        interiorColor: "black",
       });
   const [page, setPage] = useState(1);
   const [totalPages, setTotalPages] = useState(0); // Mock total pages, update based on your data
@@ -249,7 +249,7 @@ const CarListingPage = () => {
     <div className="min-h-screen bg-gray-100 p-6">
       <div className="flex justify-between items-start mb-6">
         <FilterComponent onFilterChange={setFilters} />
-        <div className="mt-6 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+        <div className=" grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
           {listings.length > 0 ? (
             listings.map((listing) => (
               <div key={listing.vin} className="car-card border rounded-lg shadow-sm p-4">
