@@ -6,6 +6,7 @@ import Does from '../components/Does'
 import VideoSection from '../components/VideoSection'
 import Importance from '../components/Importance'
 import { SiAcura, SiHonda, SiJaguar, SiNissan, SiTesla, SiVolvo } from 'react-icons/si'
+import TopRatedCars from '../components/TopRated'
 
 function Homepage() {
     return (
@@ -33,22 +34,22 @@ function Homepage() {
             </div>
             {/* <Whylease /> */}
             {/* <Does /> */}
-            <VideoSection />
 
             {/* Important Things to Consider */}
-            <div className="flex flex-col justify-center items-center mt-16 mb-8">
+            {/* <div className="flex flex-col justify-center items-center mt-16 mb-8">
                 <h1 className="text-3xl md:text-4xl lg:text-5xl font-bold text-center">
-                    Important Things to Consider
+                Important Things to Consider
                 </h1>
                 <h4 className="w-full md:w-4/5 lg:w-1/2 text-base text-center mt-4">
-                    Depending on your circumstances and what is important to you, a
-                    lease could be a great option for your next vehicle. Below are
-                    some important factors that may influence your decision.
+                Depending on your circumstances and what is important to you, a
+                lease could be a great option for your next vehicle. Below are
+                some important factors that may influence your decision.
                 </h4>
-            </div>
-
+                </div> */}
+            <TopRatedCars />
+                <VideoSection />
             {/* Importance Section */}
-            <div className="flex flex-col md:flex-row flex-wrap justify-between lg:px-24 px-4 gap-y-10 lg:gap-y-0">
+            {/* <div className="flex flex-col md:flex-row flex-wrap justify-between lg:px-24 px-4 gap-y-10 lg:gap-y-0">
                 <Importance
                     image="/Imp6.png"
                     text="Monthly payments on leases are generally 20% - 30% cheaper than loans"
@@ -65,7 +66,7 @@ function Homepage() {
                     image="Imp9.png"
                     text="There are often fees charged if you drive more than your lease's mileage allowance"
                 />
-            </div>
+            </div> */}
 
         </div>
     )

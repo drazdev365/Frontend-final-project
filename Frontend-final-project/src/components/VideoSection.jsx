@@ -2,7 +2,7 @@ import React from "react";
 
 export default function VideoSection() {
   return (
-    <div className="w-full flex h-full flex-col lg:flex-row  py-12 ">
+    <div className="w-full flex h-full flex-col lg:flex-row  ">
       {/* Video Section */}
       <div className="flex justify-center h-full w-full lg:w-1/2 mb-8 lg:mb-0">
         <video

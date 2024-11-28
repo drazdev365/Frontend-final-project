@@ -9,11 +9,11 @@ export const linkData = [
       path: "/browse",
       id: 2,
     },
-    {
-      label: "Compare Cars", // Compare selected cars
-      path: "/compare",
-      id: 4,
-    },
+    // {
+    //   label: "Compare Cars", // Compare selected cars
+    //   path: "/compare",
+    //   id: 4,
+    // },
     {
       label: "About Us", // Info about your platform
       path: "/about",
