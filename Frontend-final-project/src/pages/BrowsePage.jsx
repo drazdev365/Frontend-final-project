@@ -37,16 +37,30 @@ const FilterComponent = ({ onFilterChange }) => {
     });
   };
 
+  const carMakes = [
+    "Acura", "Alfa Romeo", "AM General", "Aston Martin", "Audi", "BMW", "Bentley", "Bugatti", "Buick", "Cadillac",
+    "Chevrolet", "Chrysler", "Daewoo", "Datsun", "Dodge", "Eagle", "FIAT", "Ferrari", "Fisker", "Ford", "GMC",
+    "Genesis", "Geo", "HUMMER", "Honda", "Hyundai", "Infiniti", "Isuzu", "Jaguar", "Jeep", "Kia", "Lamborghini",
+    "Land Rover", "Lexus", "Lincoln", "Lotus", "MINI", "Maserati", "Maybach", "Mazda", "McLaren", "Mercedes-Benz",
+    "Mercury", "Mitsubishi", "Nissan", "Oldsmobile", "Panoz", "Plymouth", "Pontiac", "Porsche", "Ram", "Rolls-Royce",
+    "Saab", "Saturn", "Scion", "Smart", "Sterling", "Subaru", "Suzuki", "Tesla", "Toyota", "Volkswagen", "Volvo"
+  ];
   return (
     <div className="p-4 border w-[20%] border-gray-300 rounded-md shadow-md space-y-4 bg-white">
-      <div className="flex flex-col space-y-2">
+    <div className="flex flex-col space-y-2">
         <label className="font-semibold">Make</label>
-        <select name="make" onChange={handleFilterChange} value={filters.make} className="p-2 border border-gray-300 rounded-md">
+        <select
+          name="make"
+          onChange={handleFilterChange}
+          value={filters.make}
+          className="p-2 border border-gray-300 rounded-md"
+        >
           <option value="">Select Make</option>
-          <option value="Acura">Acura</option>
-          <option value="Audi">Audi</option>
-          <option value="Tesla">Tesla</option>
-          <option value="Toyota">Toyota</option>
+          {carMakes.map((make) => (
+            <option key={make} value={make}>
+              {make}
+            </option>
+          ))}
         </select>
       </div>
 
@@ -156,6 +170,7 @@ const FilterComponent = ({ onFilterChange }) => {
           <option value="">Select Exterior Color</option>
           <option value="black">Black</option>
           <option value="gray">Gray</option>
+        <option value="red">red</option>
           <option value="silver">Silver</option>
         </select>
       </div>
@@ -170,6 +185,7 @@ const FilterComponent = ({ onFilterChange }) => {
         >
           <option value="">Select Interior Color</option>
           <option value="black">Black</option>
+          <option value="red">red</option>
           <option value="brown">Brown</option>
           <option value="blue">Blue</option>
         </select>
@@ -211,24 +227,24 @@ const PaginationComponent = ({ currentPage, totalPages, onPageChange }) => {
 
 
 const CarListingPage = () => {
-    const [filters, setFilters] = useState({
-        yearMin: 2016,
-        yearMax: 2022,
-        priceMax: 35000,
-        make: "Acura",
-        model: "MDX",
-        transmission: "automatic",
-        features: [],
-        exteriorColor: "black",
-        interiorColor: "black",
-      });
+  const [filters, setFilters] = useState({
+    yearMin: 2016,
+    yearMax: 2022,
+    priceMax: 35000,
+    make: "Acura",
+    model: "MDX",
+    transmission: "automatic",
+    features: [],
+    exteriorColor: "black",
+    interiorColor: "black",
+  });
   const [page, setPage] = useState(1);
   const [totalPages, setTotalPages] = useState(0); // Mock total pages, update based on your data
   const [listings, setListings] = useState([]); // Replace with API response
+  const [loading, setLoading] = useState(false); // Loading state
 
   const fetchData = async () => {
-    // // Make an API call to fetch the data based on filters and page
-    // const url = `https://auto.dev/api/listings?apikey=ZrQEPSkKcGQzMDcyODk0QGdtYWlsLmNvbQ==&year_min=${filters.yearMin}&year_max=${filters.yearMax}&price_max=${filters.priceMax}&make=${filters.make}&model=${filters.model}&transmission=${filters.transmission}&features[]=${filters.features.join("&features[]=")}&exterior_color[]=${filters.exteriorColor}&interior_color[]=${filters.interiorColor}&page=${page}`;
+    setLoading(true); // Set loading to true before starting fetch
     const url = `https://auto.dev/api/listings?apikey=ZrQEPSkKcGQzMDcyODk0QGdtYWlsLmNvbQ==&year_min=${filters.yearMin}&year_max=${filters.yearMax}&price_max=${filters.priceMax}&make=${filters.make}&model=${filters.model}&transmission=${filters.transmission}&features[]=${filters.features.join("&features[]=")}&exterior_color=${filters.exteriorColor}&interior_color=${filters.interiorColor}&page=${page}`;
 
     try {
@@ -238,6 +254,8 @@ const CarListingPage = () => {
       setTotalPages(data.totalCount || 0); // Adjust based on API response
     } catch (error) {
       console.error("Error fetching data:", error);
+    } finally {
+      setLoading(false); // Set loading to false after fetch completes
     }
   };
 
@@ -249,19 +267,32 @@ const CarListingPage = () => {
     <div className="min-h-screen bg-gray-100 p-6">
       <div className="flex justify-between items-start mb-6">
         <FilterComponent onFilterChange={setFilters} />
-        <div className=" grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
-          {listings.length > 0 ? (
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+          {loading ? (
+            <div className="text-center col-span-full">
+              <p className="text-gray-500">Loading cars...</p>
+            </div>
+          ) : listings.length > 0 ? (
             listings.map((listing) => (
-              <div key={listing.vin} className="car-card border rounded-lg shadow-sm p-4">
+              <div
+                key={listing.vin}
+                className="car-card border rounded-lg shadow-sm p-4"
+              >
                 <img
                   src={listing.photoUrls[0] || "https://via.placeholder.com/300"}
                   alt={`${listing.year} ${listing.make} ${listing.model}`}
                   className="w-full h-48 object-cover rounded-md mb-4"
                 />
-                <h3 className="text-lg font-bold">{listing.year} {listing.make} {listing.model}</h3>
-                <p className="text-sm text-gray-600">{listing.city}, {listing.state}</p>
+                <h3 className="text-lg font-bold">
+                  {listing.year} {listing.make} {listing.model}
+                </h3>
+                <p className="text-sm text-gray-600">
+                  {listing.city}, {listing.state}
+                </p>
                 <p className="text-sm text-gray-600">Price: ${listing.price}</p>
-                <p className="text-sm text-gray-600">Mileage: {listing.mileage} miles</p>
+                <p className="text-sm text-gray-600">
+                  Mileage: {listing.mileage} miles
+                </p>
                 <Link
                   to={`/browse/${listing.vin}`}
                   className="text-white px-3 py-2 rounded-md bg-black hover:underline mt-2 inline-block"
@@ -271,11 +302,17 @@ const CarListingPage = () => {
               </div>
             ))
           ) : (
-            <p className="text-gray-500">No cars found. Adjust your filters and try again.</p>
+            <p className="text-gray-500">
+              No cars found. Adjust your filters and try again.
+            </p>
           )}
         </div>
       </div>
-      <PaginationComponent currentPage={page} totalPages={totalPages} onPageChange={setPage} />
+      <PaginationComponent
+        currentPage={page}
+        totalPages={totalPages}
+        onPageChange={setPage}
+      />
     </div>
   );
 };

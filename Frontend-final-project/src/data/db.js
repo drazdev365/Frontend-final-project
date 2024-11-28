@@ -19,10 +19,10 @@ export const linkData = [
       path: "/about",
       id: 6,
     },
-    {
-      label: "Contact Us", // Reach out for support
-      path: "/contact",
-      id: 7,
-    },
+    // {
+    //   label: "Contact Us", // Reach out for support
+    //   path: "/contact",
+    //   id: 7,
+    // },
   ];
   
