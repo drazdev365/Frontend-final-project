@@ -13,6 +13,7 @@ function App() {
         <Routes>
           <Route path="/" element={<Homepage />} />
           <Route path="/browse" element={<Homepage />} />
+          <Route path="/browse/:vim" element={<Homepage />} />
           <Route path="/compare" element={<Homepage />} />
           <Route path="/contact" element={<Homepage />} />
         </Routes>

@@ -31,8 +31,8 @@ function Homepage() {
                 <p className='flex justify-center items-center gap-2 text-base'><SiHonda size={30} /> Honda</p>
 
             </div>
-            <Whylease />
-            <Does />
+            {/* <Whylease /> */}
+            {/* <Does /> */}
             <VideoSection />
 
             {/* Important Things to Consider */}
