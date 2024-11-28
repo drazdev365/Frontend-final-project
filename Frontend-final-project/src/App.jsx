@@ -5,6 +5,8 @@ import { BrowserRouter, Route, Routes } from "react-router-dom";
 import Homepage from "./pages/Homepage";
 import VehicleDetail from "./pages/CarDetails";
 import CarFilterPage from "./pages/BrowsePage";
+import AboutPage from "./pages/AboutPage";
+import Form from "./pages/Form";
 
 function App() {
 
@@ -16,8 +18,8 @@ function App() {
           <Route path="/" element={<Homepage />} />
           <Route path="/browse" element={<CarFilterPage />} />
           <Route path="/browse/:vin" element={<VehicleDetail />} />
-          {/* <Route path="/compare" element={<Homepage />} /> */}
-          <Route path="/contact" element={<Homepage />} />
+          <Route path="/about" element={<AboutPage />} />
+          <Route path="/contact" element={<Form />} />
         </Routes>
       <PageFooter />
       </BrowserRouter>

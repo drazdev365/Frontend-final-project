@@ -28,9 +28,9 @@ export default function Navbar() {
           ))
         }
       </div>
-      <div className="bg-primary-100 px-4 text-sm font-semibold text-white rounded-lg py-2">
+      <Link to={"/contact"} className="bg-primary-100 px-4 text-sm font-semibold text-white rounded-lg py-2">
         Contact Us
-      </div>
+      </Link>
     </nav>
   )
 
