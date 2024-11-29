@@ -13,7 +13,7 @@ export default function Navbar() {
       <Link to={"/"} className="text-xl text-primary-100 font-semibold">
         TOPCAR
       </Link>
-      <div className="justify-between text-black text-sm flex w-[30%] items-center">
+      <div className="justify-between hidden text-black text-sm lg:flex w-[30%] items-center">
         {
           linkData.map((link) => (
             <NavLink

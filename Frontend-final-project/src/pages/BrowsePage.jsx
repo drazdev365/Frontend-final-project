@@ -1,3 +1,4 @@
+import { Spinner } from "@material-tailwind/react";
 import React, { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 
@@ -38,16 +39,19 @@ const FilterComponent = ({ onFilterChange }) => {
   };
 
   const carMakes = [
-    "Acura", "Alfa Romeo", "AM General", "Aston Martin", "Audi", "BMW", "Bentley", "Bugatti", "Buick", "Cadillac",
-    "Chevrolet", "Chrysler", "Daewoo", "Datsun", "Dodge", "Eagle", "FIAT", "Ferrari", "Fisker", "Ford", "GMC",
-    "Genesis", "Geo", "HUMMER", "Honda", "Hyundai", "Infiniti", "Isuzu", "Jaguar", "Jeep", "Kia", "Lamborghini",
-    "Land Rover", "Lexus", "Lincoln", "Lotus", "MINI", "Maserati", "Maybach", "Mazda", "McLaren", "Mercedes-Benz",
-    "Mercury", "Mitsubishi", "Nissan", "Oldsmobile", "Panoz", "Plymouth", "Pontiac", "Porsche", "Ram", "Rolls-Royce",
-    "Saab", "Saturn", "Scion", "Smart", "Sterling", "Subaru", "Suzuki", "Tesla", "Toyota", "Volkswagen", "Volvo"
+    "Acura", "Alfa Romeo", "Audi", "BMW", 
   ];
+  // const carMakes = [
+  //   "Acura", "Alfa Romeo", "AM General", "Aston Martin", "Audi", "BMW", "Bentley", "Bugatti", "Buick", "Cadillac",
+  //   "Chevrolet", "Chrysler", "Daewoo", "Datsun", "Dodge", "Eagle", "FIAT", "Ferrari", "Fisker", "Ford", "GMC",
+  //   "Genesis", "Geo", "HUMMER", "Honda", "Hyundai", "Infiniti", "Isuzu", "Jaguar", "Jeep", "Kia", "Lamborghini",
+  //   "Land Rover", "Lexus", "Lincoln", "Lotus", "MINI", "Maserati", "Maybach", "Mazda", "McLaren", "Mercedes-Benz",
+  //   "Mercury", "Mitsubishi", "Nissan", "Oldsmobile", "Panoz", "Plymouth", "Pontiac", "Porsche", "Ram", "Rolls-Royce",
+  //   "Saab", "Saturn", "Scion", "Smart", "Sterling", "Subaru", "Suzuki", "Tesla", "Toyota", "Volkswagen", "Volvo"
+  // ];
   return (
     <div className="p-4 border w-[20%] border-gray-300 rounded-md shadow-md space-y-4 bg-white">
-    <div className="flex flex-col space-y-2">
+      <div className="flex flex-col space-y-2">
         <label className="font-semibold">Make</label>
         <select
           name="make"
@@ -170,7 +174,7 @@ const FilterComponent = ({ onFilterChange }) => {
           <option value="">Select Exterior Color</option>
           <option value="black">Black</option>
           <option value="gray">Gray</option>
-        <option value="red">red</option>
+          <option value="red">red</option>
           <option value="silver">Silver</option>
         </select>
       </div>
@@ -211,7 +215,7 @@ const PaginationComponent = ({ currentPage, totalPages, onPageChange }) => {
       >
         Previous
       </button>
-      <span className={`text-lg font-semibold ${totalPages=== 0 ? "hidden" : "block"}`}>{currentPage}/ {totalPages}</span>
+      <span className={`text-lg font-semibold ${totalPages === 0 ? "hidden" : "block"}`}>{currentPage}/ {totalPages}</span>
       <button
         onClick={() => handlePageChange(currentPage + 1)}
         disabled={currentPage >= totalPages}
@@ -269,8 +273,10 @@ const CarListingPage = () => {
         <FilterComponent onFilterChange={setFilters} />
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
           {loading ? (
-            <div className="text-center col-span-full">
-              <p className="text-gray-500">Loading cars...</p>
+
+            <div className="col-span-full row-span-full z-50 place-content-center absolute  ">
+              <Spinner size="xs" className="mr-2" />
+
             </div>
           ) : listings.length > 0 ? (
             listings.map((listing) => (
