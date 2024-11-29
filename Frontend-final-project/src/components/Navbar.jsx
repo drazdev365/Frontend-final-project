@@ -1,14 +1,25 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { linkData } from "../data/db";
 import { Link, NavLink } from "react-router-dom";
 
 export default function Navbar() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const [isFloat, setIsFloat] = useState(false);
 
 
+  useEffect(() => {
+    if (window.scrollY > 0) {
+      setIsFloat(true);
+      console.log("user started scrolling");
+    }
+    else {
+      setIsFloat(false);
+      console.log("user stopped scrolling");
+    }
+  }, [])
 
   return (
-    <nav className="flex justify-between cursor-pointer items-center px-6 md:px-24 py-3">
+    <nav className={`flex  ${isFloat ? "fixed" : "relative"} top-0 w-full bg-white z-50 justify-between cursor-pointer items-center px-6 md:px-24 py-4`}>
       {/* Logo Section */}
       <Link to={"/"} className="text-xl text-primary-100 font-semibold">
         TOPCAR
