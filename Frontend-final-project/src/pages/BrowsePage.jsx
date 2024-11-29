@@ -39,7 +39,7 @@ const FilterComponent = ({ onFilterChange }) => {
   };
 
   const carMakes = [
-    "Acura", "Alfa Romeo", "Audi", "BMW", 
+    "Acura", "Alfa Romeo", "Audi", "BMW",
   ];
   // const carMakes = [
   //   "Acura", "Alfa Romeo", "AM General", "Aston Martin", "Audi", "BMW", "Bentley", "Bugatti", "Buick", "Cadillac",
@@ -50,7 +50,7 @@ const FilterComponent = ({ onFilterChange }) => {
   //   "Saab", "Saturn", "Scion", "Smart", "Sterling", "Subaru", "Suzuki", "Tesla", "Toyota", "Volkswagen", "Volvo"
   // ];
   return (
-    <div className="p-4 border w-[20%] border-gray-300 rounded-md shadow-md space-y-4 bg-white">
+    <div className="p-4 border w-full flex-col flex lg:block lg:w-[20%] border-gray-300 rounded-md shadow-md space-y-4 bg-white">
       <div className="flex flex-col space-y-2">
         <label className="font-semibold">Make</label>
         <select
@@ -254,7 +254,9 @@ const CarListingPage = () => {
     try {
       const response = await fetch(url);
       const data = await response.json();
-      setListings(data.records || []);
+      const sortedDataByPrice = data.records.sort((a, b) => a.price.slice(1) < b.price.slice(1));
+      // console.log("list of the d=sorted data",sortedDataByPrice);
+      setListings(sortedDataByPrice || []);
       setTotalPages(data.totalCount || 0); // Adjust based on API response
     } catch (error) {
       console.error("Error fetching data:", error);
@@ -267,9 +269,14 @@ const CarListingPage = () => {
     fetchData();
   }, [filters, page]);
 
+
+  // const baddo = "$56745"
+  // console.log(baddo.slice(1));
+  
+
   return (
     <div className="min-h-screen bg-gray-100 p-6">
-      <div className="flex justify-between items-start mb-6">
+      <div className="flex lg:flex-row flex-col justify-between items-start mb-6">
         <FilterComponent onFilterChange={setFilters} />
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
           {loading ? (
@@ -295,7 +302,7 @@ const CarListingPage = () => {
                 <p className="text-sm text-gray-600">
                   {listing.city}, {listing.state}
                 </p>
-                <p className="text-sm text-gray-600">Price: ${listing.price}</p>
+                <p className="text-sm text-gray-600">Price: {listing.price}</p>
                 <p className="text-sm text-gray-600">
                   Mileage: {listing.mileage} miles
                 </p>

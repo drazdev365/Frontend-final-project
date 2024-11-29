@@ -48,9 +48,9 @@ export default function Navbar() {
         <p
           onClick={() => setIsMenuOpen(!isMenuOpen)}
           className="bg-primary-100 lg:hidden block text-white text-3xl p-1">
-         {
-          isMenuOpen ? (<IoClose />) : ( <BiMenu />)
-         }
+          {
+            isMenuOpen ? (<IoClose />) : (<BiMenu />)
+          }
         </p>
         {/* Mobile Menu */}
 
@@ -74,6 +74,9 @@ export default function Navbar() {
                   </NavLink>
                 ))
               }
+              <Link to={"/contact"} className="bg-primary-100  px-4 text-sm font-semibold text-white rounded-lg py-2">
+                Contact Us
+              </Link>
             </div>
           )
         }
