@@ -48,7 +48,7 @@ export function Hero() {
   ];
 
   return (
-    <div >
+    <>
       <Carousel
         loop={true}
         autoplay={true}
@@ -89,13 +89,13 @@ export function Hero() {
         )}
       >
         {HeroData.map((data, id) => (
-          <div key={id} className="lg:h-[85dvh] overflow-hidden relative w-full bg-white">
+          <div key={id} className="lg:h-[85dvh]  h-[280px] overflow-hidden relative w-full bg-white">
             <img
               src={data.imageUrl}
               alt={data.imageUrl}
               className={`w-1/2 bottom-0 absolute right-0 object-cover ${data.imageUrl === "/white-car.png" ? "bottom-[10%]" : "-bottom-[10%]"}`}
             />
-            <div className="lg:w-[40%] w-[70%] absolute top-[40%] left-[40%] -translate-y-1/2 -translate-x-[80%] flex flex-col gap-4 text-black px-6 sm:px-12">
+            <div className="lg:w-[40%] w-[70%] absolute top-[40%] left-[56%] lg:left-[40%] -translate-y-1/2 -translate-x-[80%] flex flex-col gap-4 text-black px-6 sm:px-12">
               <h1 className="lg:text-4xl text-xl font-bold w-full">
                 {data.Headline}
               </h1>
@@ -111,6 +111,6 @@ export function Hero() {
           </div>
         ))}
       </Carousel>
-    </div>
+    </>
   );
 }

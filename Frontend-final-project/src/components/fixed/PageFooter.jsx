@@ -8,8 +8,8 @@ function PageFooter() {
                 <Footers
                     text1="Product"
                     text2="Used"
-                    text3="New"
-                    text4="Sell your car"
+                    text3="100%"
+                    text4="Find your dream car"
                 />
                 <Footers
                     text1="Resources"

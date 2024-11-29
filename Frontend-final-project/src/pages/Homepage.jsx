@@ -10,7 +10,7 @@ import TopRatedCars from '../components/TopRated'
 
 function Homepage() {
     return (
-        <div>
+        <>
             <Hero />
 
             {/* Stat Section */}
@@ -23,7 +23,7 @@ function Homepage() {
                 <Stat text="CAR TYPES" numb="18" />
             </div> */}
 
-            <div className='flex justify-between p-4 w-full bg-black text-white px-10 text-lg'>
+            <div className='flex  flex-wrap gap-2 justify-between p-4 w-full bg-black text-white px-10 text-lg'>
                 <p className='flex justify-center items-center gap-2 text-base'><SiNissan size={30} /> Nissan</p>
                 <p className='flex justify-center items-center gap-2 text-base'><SiTesla size={30} /> Tesla</p>
                 <p className='flex justify-center items-center gap-2 text-base'><SiVolvo size={30} /> Volvo</p>
@@ -68,7 +68,7 @@ function Homepage() {
                 />
             </div> */}
 
-        </div>
+        </>
     )
 }
 
