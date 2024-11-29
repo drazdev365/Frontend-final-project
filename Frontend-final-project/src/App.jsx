@@ -7,6 +7,7 @@ import VehicleDetail from "./pages/CarDetails";
 import CarFilterPage from "./pages/BrowsePage";
 import AboutPage from "./pages/AboutPage";
 import Form from "./pages/Form";
+import ContactSection14 from "./pages/ContactUs";
 
 function App() {
 
@@ -19,9 +20,9 @@ function App() {
           <Route path="/browse" element={<CarFilterPage />} />
           <Route path="/browse/:vin" element={<VehicleDetail />} />
           <Route path="/about" element={<AboutPage />} />
-          <Route path="/contact" element={<Form />} />
+          <Route path="/contact" element={<ContactSection14 />} />
         </Routes>
-      <PageFooter />
+        <PageFooter />
       </BrowserRouter>
     </>
   );
