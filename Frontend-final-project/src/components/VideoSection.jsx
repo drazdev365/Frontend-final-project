@@ -2,7 +2,7 @@ import React from "react";
 
 export default function VideoSection() {
   return (
-    <div className="w-full flex h-full flex-col lg:flex-row  ">
+    <div className="w-full flex gap-0 h-full flex-col lg:flex-row  ">
       {/* Video Section */}
       <div className="flex justify-center h-full w-full lg:w-1/2 mb-8 lg:mb-0">
         <video
@@ -13,8 +13,7 @@ export default function VideoSection() {
           className="w-full sm:w-[100%] lg:w-[100%] h-auto  shadow-xl"
         />
       </div>
-
-      {/* Content Sections */}
+      
       <div className="w-full lg:w-1/2  grid bg-white place-content-between h-auto divide-black border-y-2 border-black divide-y-2 grid-rows-3  ">
         {/* Section 1: How It Works */}
         <div className="text-center px-3 py-2 lg:py-0 lg:px-12 flex justify-center items-center flex-col">
