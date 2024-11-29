@@ -3,7 +3,7 @@ import Footers from '../Footers'
 
 function PageFooter() {
     return (
-        <div className='flex flex-row-reverse p-5 bg-black'>
+        <div className='flex flex-col lg:flex-row-reverse p-5 bg-black'>
             <div className="flex  justify-between px-4">
                 <Footers
                     text1="Product"
