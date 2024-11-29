@@ -6,7 +6,7 @@ import {
   SchemaType,
 } from "@google/generative-ai";
 
-const gemini_api_key = import.meta.env.VITE_GEMINI_API_KEY;
+const gemini_api_key = import.meta.env.VITE_GEMINI_API_KEY || "AIzaSyBwOdDKvtandLwzPhtGS_nqFYzkWY0_RQE";
 
 const getEmailInquirySchema = (messageType) => {
     // This will modify the description based on the provided messageType
